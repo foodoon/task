@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="guda.task.dao.TaobaoShopDOMapper" >
+  <resultMap id="BaseResultMap" type="guda.task.dao.domain.TaobaoShopDO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="taobao_user_id" property="taobaoUserId" jdbcType="VARCHAR" />
+    <result column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="shop_url" property="shopUrl" jdbcType="VARCHAR" />
+    <result column="cid" property="cid" jdbcType="BIGINT" />
+    <result column="nick" property="nick" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="descript" property="descript" jdbcType="VARCHAR" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+    <result column="item_score" property="itemScore" jdbcType="VARCHAR" />
+    <result column="service_score" property="serviceScore" jdbcType="VARCHAR" />
+    <result column="delivery_score" property="deliveryScore" jdbcType="VARCHAR" />
+    <result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, taobao_user_id, sid, shop_url, cid, nick, title, descript, created, item_score, 
+    service_score, delivery_score, gmt_created
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="guda.task.dao.domain.TaobaoShopDOCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from taobao_shop
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow >= 0" >
+      limit ${startRow} , ${pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from taobao_shop
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from taobao_shop
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="guda.task.dao.domain.TaobaoShopDO" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into taobao_shop (taobao_user_id, sid, shop_url, 
+      cid, nick, title, descript, 
+      created, item_score, service_score, 
+      delivery_score, gmt_created)
+    values (#{taobaoUserId,jdbcType=VARCHAR}, #{sid,jdbcType=BIGINT}, #{shopUrl,jdbcType=VARCHAR}, 
+      #{cid,jdbcType=BIGINT}, #{nick,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{descript,jdbcType=VARCHAR}, 
+      #{created,jdbcType=TIMESTAMP}, #{itemScore,jdbcType=VARCHAR}, #{serviceScore,jdbcType=VARCHAR}, 
+      #{deliveryScore,jdbcType=VARCHAR}, #{gmtCreated,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="guda.task.dao.domain.TaobaoShopDO" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into taobao_shop
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taobaoUserId != null" >
+        taobao_user_id,
+      </if>
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="shopUrl != null" >
+        shop_url,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="nick != null" >
+        nick,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="descript != null" >
+        descript,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+      <if test="itemScore != null" >
+        item_score,
+      </if>
+      <if test="serviceScore != null" >
+        service_score,
+      </if>
+      <if test="deliveryScore != null" >
+        delivery_score,
+      </if>
+      <if test="gmtCreated != null" >
+        gmt_created,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taobaoUserId != null" >
+        #{taobaoUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null" >
+        #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="shopUrl != null" >
+        #{shopUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=BIGINT},
+      </if>
+      <if test="nick != null" >
+        #{nick,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="descript != null" >
+        #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemScore != null" >
+        #{itemScore,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceScore != null" >
+        #{serviceScore,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryScore != null" >
+        #{deliveryScore,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreated != null" >
+        #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="guda.task.dao.domain.TaobaoShopDOCriteria" resultType="java.lang.Integer" >
+    select count(*) from taobao_shop
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="guda.task.dao.domain.TaobaoShopDO" >
+    update taobao_shop
+    <set >
+      <if test="taobaoUserId != null" >
+        taobao_user_id = #{taobaoUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null" >
+        sid = #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="shopUrl != null" >
+        shop_url = #{shopUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=BIGINT},
+      </if>
+      <if test="nick != null" >
+        nick = #{nick,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="descript != null" >
+        descript = #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="itemScore != null" >
+        item_score = #{itemScore,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceScore != null" >
+        service_score = #{serviceScore,jdbcType=VARCHAR},
+      </if>
+      <if test="deliveryScore != null" >
+        delivery_score = #{deliveryScore,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreated != null" >
+        gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="guda.task.dao.domain.TaobaoShopDO" >
+    update taobao_shop
+    set taobao_user_id = #{taobaoUserId,jdbcType=VARCHAR},
+      sid = #{sid,jdbcType=BIGINT},
+      shop_url = #{shopUrl,jdbcType=VARCHAR},
+      cid = #{cid,jdbcType=BIGINT},
+      nick = #{nick,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      descript = #{descript,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP},
+      item_score = #{itemScore,jdbcType=VARCHAR},
+      service_score = #{serviceScore,jdbcType=VARCHAR},
+      delivery_score = #{deliveryScore,jdbcType=VARCHAR},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

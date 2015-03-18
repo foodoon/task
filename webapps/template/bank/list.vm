@@ -1,0 +1,26 @@
+<a  class="btn btn-default"  href="$!homeServer.getURI("bank/create.htm")" >新建</a>
+
+<table  class="table">
+    <thead>
+ <tr>
+              <th class="text-left">用户ID</th>
+              <th class="text-left">银行类型</th>
+              <th class="text-left">银行名称</th>
+              <th class="text-left">银行帐号</th>
+          <th class="text-left">操作</th>
+ </tr>
+    </thead>
+#foreach($f in $bankDOList)
+  <tr>
+               <td> $!f.userId</td>
+               <td> $!f.bankType</td>
+               <td> $!f.bankName</td>
+               <td> $!f.bankNo</td>
+          <td><a href="$!homeServer.getURI("bank/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
+    <td><a href="$!homeServer.getURI("bank/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
+      <td><a href="$!homeServer.getURI("bank/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
+ </tr>
+#end
+</table>
+
+$tile.load('template/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')

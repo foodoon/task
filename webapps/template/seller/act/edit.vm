@@ -1,0 +1,128 @@
+#set($headerMenu = "seller_act")
+#set($sideMenu = "act_index")
+
+
+<div class="container">
+    <div class="grid fluid">
+        <div class="row">
+            <div class="span2">
+                #parse("template/seller/act/sidebar.vm")
+
+            </div>
+            <!--/span contain-->
+            <div class="span10">
+                <nav class="breadcrumbs">
+                    <ul>
+                        <li><a href="$!homeServer.getURI("seller/act/ing.htm")">任务管理</a></li>
+                        <li class="active"><a href="#">编辑任务</a></li>
+                    </ul>
+                </nav>
+                <form name="actForm" action="$!homeServer.getURI("seller/act/doSave.htm")" method="post">
+                    <input  type="hidden" name="_form_token" value="$formTool.newForm($request)" />
+                    <table class="table">
+                        #springBind("actForm.id")
+                        <input class="form-control" type="hidden" name="${status.expression}" value="$taskList.id" />
+
+                        <tr>
+                            <td>商品名称</td>
+                            <td>
+                                $item.title
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>商品URL</td>
+                            <td>
+                                #if($item.type == 'b')
+                                    http://detail.tmall.com/item.htm?id=$item.numIid
+                                #else
+                                    http://item.taobao.com/item.htm?id=$item.numIid
+                                #end
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>垫付金额(单位:元)</td>
+                            <td>
+                                $price.formatCNY($item.price)
+                            </td>
+                        </tr>
+
+                        #springBind("actForm.amountFee")
+                        <tr>
+                            <td>佣金(单位:元)</td>
+                            <td>
+                                <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                                #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                            </td>
+                        </tr>
+                        #springBind("actForm.searchUrl")
+                        <tr>
+                            <td>搜索入口</td>
+                            <td>
+                                #foreach($e in $enum.toMap('guda.task.biz.enums.SearchEnum').entrySet())
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="${status.expression}"  value="$e.key"
+                                                #if($e.key == $!status.value)
+                                                   checked
+                                                #end>
+                                            $e.value
+
+                                        </label>
+                                    </div>
+                                #end
+                                #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                            </td>
+                        </tr>
+                        #springBind("actForm.searchKey")
+                        <tr>
+                            <td>搜索关键词</td>
+                            <td>
+                                <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                                #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>搜索结果位置（www.taobao.com）</td>
+                            <td>
+
+                                #springBind("actForm.searchResultPage")
+                                第<input  type="text" name="${status.expression}" value="$!status.value" />页
+                                #springBind("actForm.searchResultRow")
+                                第<input  type="text" name="${status.expression}" value="$!status.value" />行
+                                #springBind("actForm.searchResultCol")
+                                第<input  type="text" name="${status.expression}" value="$!status.value" />个
+
+                            </td>
+                        </tr>
+
+
+                        #springBind("actForm.descript")
+                        <tr>
+                            <td>任务要求</td>
+                            <td>
+                                <textarea rows="5" cols="80" name="${status.expression}">$!status.value</textarea>
+
+                                #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                            </td>
+                        </tr>
+                        #springBind("actForm.comment")
+                        <tr>
+                            <td>任务备注</td>
+                            <td>
+                                <textarea rows="5" cols="80" name="${status.expression}">$!status.value</textarea>
+                                #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" class="btn" value="提交"/></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <!--/span contain-->
+        </div></div></div>

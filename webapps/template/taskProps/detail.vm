@@ -1,0 +1,24 @@
+$!taskProps详情
+  <table class="table">
+                <tr>
+              <td>任务ID</td>
+              <td>
+                  $!taskPropsDO.taskId
+              </td>
+          </tr>
+
+                <tr>
+              <td>属性</td>
+              <td>
+                  $!taskPropsDO.requireKey
+              </td>
+          </tr>
+
+                <tr>
+              <td>属性值</td>
+              <td>
+                  $!taskPropsDO.requireValue
+              </td>
+          </tr>
+
+        </table>

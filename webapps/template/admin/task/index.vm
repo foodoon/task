@@ -1,0 +1,91 @@
+#set($headerMenu = "admin_task")
+#set($sideMenu = "task_index")
+
+<div class="container">
+    <div class="grid fluid">
+        <div class="row">
+            <div class="span12">
+                <form   name="adminTaskSearchForm" action="$!homeServer.getURI("admin/task/index.htm")" method="post">
+                <table>
+                    <tr>
+
+                        <td>卖家昵称</td>
+                        #springBind("adminTaskSearchForm.sellerNick")
+                        <td><input  class="text" type="text" name="${status.expression}" value="$!status.value"></td>
+
+                        <td>状态</td>
+                        <td>
+                            #springBind("adminTaskSearchForm.status")
+
+                            <select name="${status.expression}">
+                                <option value="" >全部</option>
+                            #foreach($e in $enum.toMap('guda.task.biz.enums.TaskStatusEnum').entrySet())
+                                <option value="$e.key"
+                                #if($e.key == $!status.value)
+                                    selected="true"
+                                #end> $e.value</option>
+                            #end
+
+                          </select>
+                        </td>
+                        <td>开始时间</td>
+                        <td>
+                            #springBind("adminTaskSearchForm.startDate")
+                            <input name="${status.expression}" value="$!status.value"  type="text" onClick="WdatePicker()">
+                            #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                      </td>
+                        <td>结束时间</td>
+                        #springBind("adminTaskSearchForm.endDate")
+                        <td>
+                            <input name="${status.expression}" value="$!status.value"   class=" text" type="text" onClick="WdatePicker()">
+                            #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                        </td>
+                        <td><input  type="submit" value="搜索"></td>
+                    </tr>
+                </table>
+                  </form>
+            </div>
+            </div>
+        <!--search row end-->
+        <div class="row">
+            <div class="span12">
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th class="text-left">卖家昵称</th>
+                        <th class="text-left">卖家旺旺</th>
+                        <th class="text-left">商品名称</th>
+                        <th class="text-left">商品URL</th>
+                        <th class="text-left">垫付金额</th>
+                        <th class="text-left">佣金</th>
+                        <th class="text-left">状态</th>
+                        <th class="text-left">接单登录名</th>
+                        <th class="text-left">接单用户旺旺</th>
+                        <th class="text-left">淘宝交易号</th>
+
+                    </tr>
+                    </thead>
+                    #foreach($f in $taskListDOList)
+                        <tr>
+                            <td> $!f.sellerUser.taobaoUserNick</td>
+                            <td> $!f.sellerUser.wangwang</td>
+                            <td> $!f.taskListDO.itemName</td>
+                            <td> $!f.taskListDO.itemUrl</td>
+                            <td> $price.formatCNY($!f.taskListDO.amountPay)</td>
+                            <td> $price.formatCNY($!f.taskListDO.amountFee)</td>
+                            <td> $enum.i('guda.task.biz.enums.TaskStatusEnum',$!f.taskListDO.status)</td>
+                            <td> $!f.acceptUser.loginName</td>
+                            <td>$!f.acceptUser.wangwang</td>
+                            <td>$!f.taskAcceptDO.taobaoTradeNo</td>
+
+                        </tr>
+                    #end
+                </table>
+
+                $tile.load('template/common/page.vm').param('query',$query).param('path','admin/task/index.htm')
+            </div>
+        </div>
+        </div>
+    </div>
+
+<script src="$!homeServer.getURI("assets/My97DatePicker/WdatePicker.js")"></script>

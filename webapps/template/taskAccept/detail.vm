@@ -1,0 +1,24 @@
+$!taskAccept详情
+  <table class="table">
+                <tr>
+              <td>任务ID</td>
+              <td>
+                  $!taskAcceptDO.taskId
+              </td>
+          </tr>
+
+                <tr>
+              <td>用户ID</td>
+              <td>
+                  $!taskAcceptDO.userId
+              </td>
+          </tr>
+
+                <tr>
+              <td>任务状态</td>
+              <td>
+                  $!taskAcceptDO.status
+              </td>
+          </tr>
+
+        </table>

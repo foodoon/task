@@ -1,0 +1,26 @@
+#set($headerMenu = "admin_user")
+#set($sideMenu = "user_index")
+<script language="JavaScript">
+    var _token = "$formTool.newForm($request)";
+</script>
+<div class="container">
+    <div class="grid fluid">
+
+        <div class="row">
+            <div class="span12">
+                <nav class="breadcrumbs">
+                    <ul>
+                        <li><a href="$!homeServer.getURI("admin/user/index.htm")">用户管理</a></li>
+                        <li class="active"><a href="#">充值结果</a></li>
+                    </ul>
+                </nav>
+                <div class="alert form-center">
+                    充值成功
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+

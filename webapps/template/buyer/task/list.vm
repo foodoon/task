@@ -1,0 +1,54 @@
+#set($headerMenu = "buyer_task")
+#set($sideMenu = "task_list")
+<script language="JavaScript">
+    var _token= "$formTool.newForm($request)";
+</script>
+
+
+<div class="container">
+    <div class="grid fluid">
+        <div class="row">
+        <div class="span2">
+            #parse("template/buyer/task/sidebar.vm")
+
+        </div>
+        <!--/span contain-->
+        <div class="span10">
+            #parse("template/common/pageMsg.vm")
+            <div class="row-fluid">
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+
+                        <th class="text-left">商品ID</th>
+                        <th class="text-left">商品名称</th>
+                        <th class="text-left">商品URL</th>
+                        <th class="text-left">垫付金额(单位:元))</th>
+                        <th class="text-left">佣金(单位:元))</th>
+
+                        <th class="text-left">操作</th>
+                    </tr>
+                    </thead>
+                    #foreach($f in $taskListDOList)
+                        <tr>
+                            <td> $!f.itemId</td>
+                            <td> $!f.itemName</td>
+                            <td> $!f.itemUrl</td>
+                            <td> $price.formatCNY($!f.amountPay)</td>
+                            <td> $price.formatCNY($!f.amountFee)</td>
+
+
+                            <td>
+                               <a class="b_accept" href="#" id="$!f.id" >接手</a>
+                            </td>
+                        </tr>
+                    #end
+                </table>
+
+                $tile.load('template/common/page.vm').param('query',$query).param('path','buyer/task/list.htm')
+            </div>
+        </div>
+        <!--/span contain-->
+    </div></div></div>
+
+<script src="$!homeServer.getURI("assets/js/buyer.task.ing.js")"></script>

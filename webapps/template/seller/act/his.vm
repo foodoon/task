@@ -1,0 +1,61 @@
+#set($headerMenu = "seller_act")
+#set($sideMenu = "act_his")
+
+
+
+<div class="container">
+    <div class="grid fluid">
+    <div class="row">
+        <div class="span2">
+            #parse("template/seller/act/sidebar.vm")
+
+        </div>
+        <!--/span contain-->
+        <div class="span10">
+            <nav class="breadcrumbs">
+                <ul>
+                    <li><a href="$!homeServer.getURI("seller/act/ing.htm")">任务管理</a></li>
+                    <li class="active"><a href="#">历史任务</a></li>
+                </ul>
+            </nav>
+            <div class="row-fluid">
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th class="text-left">商品名称</th>
+                        <th class="text-left">商品URL</th>
+                        <th class="text-left">垫付金额(单位:元))</th>
+                        <th class="text-left">佣金(单位:元))</th>
+                        <th class="text-left">活动状态</th>
+                        <th class="text-left">操作</th>
+                    </tr>
+                    </thead>
+                    #foreach($f in $taskListDOList)
+                        <tr>
+                            <td> $!f.itemName</td>
+                            <td> $!f.itemUrl</td>
+                            <td> $price.formatCNY($!f.amountPay)</td>
+                            <td> $price.formatCNY($!f.amountFee)</td>
+                            <td> $enum.i('guda.task.biz.enums.TaskStatusEnum',$!f.status)</td>
+
+                            <td>
+                             #if($!f.status == 99)
+                                 #if($!f.scored != 1)
+                                     <a href="$!homeServer.getURI("seller/act/score.htm").addQueryData('id',"$!f.id")">评价</a>
+                                 #end
+
+                             #end
+                             <a href="$!homeServer.getURI("seller/act/copy.htm").addQueryData('id',"$!f.id")">复制并重新发布</a>
+                            </td>
+
+
+                        </tr>
+                    #end
+                </table>
+
+                $tile.load('template/common/page.vm').param('query',$query).param('path','seller/act/his.htm')
+            </div>
+        </div>
+        <!--/span contain-->
+    </div>
+        </div></div>

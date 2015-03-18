@@ -1,0 +1,87 @@
+#set($headerMenu = "seller_act")
+#set($sideMenu = "act_index")
+
+<div class="container">
+    <div class="grid fluid">
+    <div class="row">
+        <div class="span2">
+            #parse("template/seller/act/sidebar.vm")
+
+        </div>
+
+        <div class="span10">
+            <nav class="breadcrumbs">
+                <ul>
+                    <li><a href="$!homeServer.getURI("seller/act/ing.htm")">任务管理</a></li>
+                    <li class="active"><a href="#">任务详情</a></li>
+                </ul>
+            </nav>
+           <table class="table">
+               <tr>
+                   <td>商品名称</td>
+                   <td>
+                       $taskVO.TaskListDO.itemName
+                   </td>
+               </tr>
+               <tr>
+                   <td>商品URL</td>
+                   <td>
+                       $taskVO.TaskListDO.itemUrl
+                   </td>
+               </tr>
+               <tr>
+                   <td>垫付金额(单位:元)</td>
+                   <td>
+                       $price.formatCNY($taskVO.TaskListDO.amountPay)
+                   </td>
+               </tr>
+
+               <tr>
+                   <td>收益(单位:元)</td>
+                   <td>
+                      $price.formatCNY($taskVO.TaskListDO.amountFee)
+                   </td>
+               </tr>
+               <tr>
+                   <td>搜索入口</td>
+                   <td>
+
+                       $!taskVO.searchUrl
+                   </td>
+               </tr>
+               <tr>
+                   <td>搜索关键词</td>
+                   <td>
+                       $!taskVO.searchKey
+                   </td>
+               </tr>
+
+               <tr>
+                   <td>搜索结果位置</td>
+                   <td>
+
+                       $!taskVO.searchResultLocation
+
+                   </td>
+               </tr>
+
+               <tr>
+                   <td>任务要求</td>
+                   <td>
+                       <textarea rows="5" cols="80" readonly="true">$!taskVO.TaskListDO.descript</textarea>
+                   </td>
+               </tr>
+               <tr>
+                   <td>任务备注</td>
+                   <td>
+                       <textarea rows="5" cols="80" readonly="true">$!taskVO.TaskListDO.comment</textarea>
+                   </td>
+               </tr>
+
+           </table>
+
+        </div>
+        <!--/span contain-->
+    </div>
+        </div>
+    </div>

@@ -1,0 +1,164 @@
+编辑
+
+<form name="taobaoItemEditForm" action="$!homeServer.getURI("taobaoItem/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("taobaoItemEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+                #springBind("taobaoItemEditForm.taobaoUserId")
+          <tr>
+              <td>用户ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.cid")
+          <tr>
+              <td>类目ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.sellerCids")
+          <tr>
+              <td>卖家自定义类目列表</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.picUrl")
+          <tr>
+              <td>图片地址</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.num")
+          <tr>
+              <td>数量</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.listTime")
+          <tr>
+              <td>上架时间</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.delistTime")
+          <tr>
+              <td>下架时间</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.price")
+          <tr>
+              <td>价格</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.hasDiscount")
+          <tr>
+              <td>是否有折扣</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.hasShowcase")
+          <tr>
+              <td>是否橱窗推荐</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.approveStatus")
+          <tr>
+              <td>商品状态</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.isVirtual")
+          <tr>
+              <td>是否虚拟物品</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.numIid")
+          <tr>
+              <td>商品ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.title")
+          <tr>
+              <td>标题</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.nick")
+          <tr>
+              <td>卖家昵称</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.type")
+          <tr>
+              <td>类型</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.validThru")
+          <tr>
+              <td>有效期</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.soldQuantity")
+          <tr>
+              <td>销售数量</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoItemEditForm.violation")
+          <tr>
+              <td>是否违规</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

@@ -1,0 +1,59 @@
+#set($layout="template/layout/loginLayout.vm")
+<div class="container">
+
+
+    <form  class="form width350 form-center" name="userLoginForm" action="$!homeServer.getURI("login.htm")" method="post">
+        <input style="display:none" type="text"  name="_form_token" value="$formTool.newForm($request)" />
+        <h2 class="form-signin-heading">
+             会员登录
+        </h2>
+        <table class="table  no-border">
+
+            #springBind("userLoginForm.name")
+            <tr>
+                <td>用户名</td>
+                <td>
+                    <input class="text" type="text" name="${status.expression}" value="$!status.value" />
+                    #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                </td>
+            </tr>
+            #springBind("userLoginForm.password")
+            <tr>
+                <td>密码</td>
+                <td>
+                    <input class="text" type="password" name="${status.expression}" value="$!status.value" />
+                    #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                </td>
+            </tr>
+
+            #if ($showCaptcha)
+                <tr>
+                    <td>验证码</td>
+                    <td>
+                        #springBind("userLoginForm.captcha")
+                        <input type="text" name="${status.expression}" value="$!status.value" class="form-control"
+                               placeholder="验证码" style="width: 100px; float: left;"> <img
+                            id="captcha"
+                            style="cursor: pointer; cursor: hand; margin-top: -13px;"
+                            onclick="this.src='$!homeServer.getURI("captcha.htm?")'+Math.random();"
+                            src="$!homeServer.getURI("captcha.htm")">
+                        #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                    </td>
+                </tr>
+
+            #end
+
+
+            <tr>
+                <td colspan="2">
+                    <input type="submit" class="button default btn-block" value="登录"/></td>
+
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <a href="$!homeServer.getURI("regBefore.htm")">免费注册</a>
+                <td>
+            </tr>
+        </table>
+    </form>
+</div>

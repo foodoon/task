@@ -1,0 +1,21 @@
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+ <mappers>
+  <mapper resource="mybatis/UserDOMapper.xml"/>
+  <mapper resource="mybatis/AccountDOMapper.xml"/>
+  <mapper resource="mybatis/BankDOMapper.xml"/>
+  <mapper resource="mybatis/TaskListDOMapper.xml"/>
+  <mapper resource="mybatis/TaskAcceptDOMapper.xml"/>
+  <mapper resource="mybatis/TaskPropsDOMapper.xml"/>
+  <mapper resource="mybatis/TaobaoUserDOMapper.xml"/>
+  <mapper resource="mybatis/TaobaoItemDOMapper.xml"/>
+  <mapper resource="mybatis/TaobaoOrderDOMapper.xml"/>
+  <mapper resource="mybatis/TaobaoSellerDOMapper.xml"/>
+  <mapper resource="mybatis/TaobaoShopDOMapper.xml"/>
+  <mapper resource="mybatis/OperateLogDOMapper.xml"/>
+  <mapper resource="mybatis/UserScoreDOMapper.xml"/>
+  <mapper resource="mybatis/AccountDetailDOMapper.xml"/>
+  <mapper resource="mybatis/UserScoreStatDOMapper.xml"/>
+ </mappers>
+</configuration>

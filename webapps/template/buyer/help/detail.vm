@@ -1,0 +1,20 @@
+#set($headerMenu = "buyer_help")
+#set($sideMenu = "help_detail")
+
+
+<div class="container">
+    <div class="grid fluid">
+        <div class="row">
+        <div class="span2">
+            #parse("template/buyer/help/sidebar.vm")
+
+        </div>
+        <!--/span contain-->
+        <div class="span10">
+
+            <div class="row-fluid">
+
+            </div>
+        </div>
+        <!--/span contain-->
+    </div></div></div>

@@ -1,0 +1,31 @@
+$!bank详情
+  <table class="table">
+                <tr>
+              <td>用户ID</td>
+              <td>
+                  $!bankDO.userId
+              </td>
+          </tr>
+
+                <tr>
+              <td>银行类型</td>
+              <td>
+                  $!bankDO.bankType
+              </td>
+          </tr>
+
+                <tr>
+              <td>银行名称</td>
+              <td>
+                  $!bankDO.bankName
+              </td>
+          </tr>
+
+                <tr>
+              <td>银行帐号</td>
+              <td>
+                  $!bankDO.bankNo
+              </td>
+          </tr>
+
+        </table>

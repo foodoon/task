@@ -1,0 +1,80 @@
+#set($headerMenu = "seller_act")
+#set($sideMenu = "act_ing")
+
+<script language="JavaScript">
+    var _token= "$formTool.newForm($request)";
+</script>
+
+
+<div class="container">
+    <div class="grid fluid">
+
+    <div class="row">
+        <div class="span2">
+            #parse("template/seller/act/sidebar.vm")
+        </div>
+        <!--/span contain-->
+        <div class="span10">
+            <nav class="breadcrumbs">
+                <ul>
+                    <li><a href="$!homeServer.getURI("seller/act/ing.htm")">任务管理</a></li>
+                    <li class="active"><a href="#">进行中的任务</a></li>
+                </ul>
+            </nav>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="text-left">任务编号</th>
+                        <th class="text-left">商品名称</th>
+                        <th class="text-left">商品URL</th>
+                        <th class="text-left">垫付金额(单位:元)</th>
+                        <th class="text-left">佣金(单位:元)</th>
+                        <th class="text-left">淘宝交易号</th>
+                        <th class="text-left">活动状态</th>
+                        <th class="text-left">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    #foreach($f in $taskListDOList)
+                        <tr>
+                            <td> $!f.taskListDO.id</td>
+                            <td> $!f.taskListDO.itemName</td>
+                            <td> $!f.taskListDO.itemUrl</td>
+                            <td> $price.formatCNY($!f.taskListDO.amountPay)</td>
+                            <td> $price.formatCNY($!f.taskListDO.amountFee)</td>
+                            <td> $!f.taskAcceptDO.taobaoTradeNo</td>
+                            <td> $enum.i('guda.task.biz.enums.TaskStatusEnum',$!f.taskListDO.status)</td>
+
+                            <td>
+                                #if($!f.taskListDO.status == 8)
+                                    <a class="s_confirm" id="$!f.taskListDO.id" href="#">确认完成</a>
+                                    <a  href="$!homeServer.getURI("seller/record/list.htm").addQueryData('id',"$!f.taskAcceptDO.userId").addQueryData('taskId',"$!f.taskAcceptDO.taskId")">查看拍客日志</a>
+                                    <a class="s_break" id="$!f.taskListDO.id" href="#"">终止任务</a>
+                                #elseif($!f.taskListDO.status == 7)
+                                    <a  href="$!homeServer.getURI("seller/record/list.htm").addQueryData('id',"$!f.taskAcceptDO.userId").addQueryData('taskId',"$!f.taskAcceptDO.taskId")">查看拍客日志</a>
+                                    <a class="s_break" id="$!f.taskListDO.id" href="#"">终止任务</a>
+                                #elseif($!f.taskListDO.status == 0)
+                                    <a class="s_cancel" id="$!f.taskListDO.id" href="#">取消任务</a>
+                                #elseif($!f.taskListDO.status == 1)
+                                    <a class="s_cancel" id="$!f.taskListDO.id" href="#">取消任务</a>
+                                #elseif($!f.taskListDO.status == 2)
+                                    <a class="s_break" id="$!f.taskListDO.id" href="#"">终止任务</a>
+                                #end
+                                <a href="$!homeServer.getURI("seller/act/detail.htm").addQueryData('id',"$!f.taskListDO.id")">查看详情</a>
+                                <a href="$!homeServer.getURI("seller/act/copy.htm").addQueryData('id',"$!f.taskListDO.id")">复制任务</a>
+
+
+                        </tr>
+                    #end
+                    </tbody>
+                </table>
+
+                $tile.load('template/common/page.vm').param('query',$query).param('path','seller/act/ing.htm')
+
+        </div>
+        <!--/span contain-->
+    </div>
+    </div>
+</div>
+
+<script src="$!homeServer.getURI("assets/js/seller.task.ing.js")"></script>

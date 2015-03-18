@@ -1,0 +1,136 @@
+$!taobaoItem详情
+  <table class="table">
+                <tr>
+              <td>用户ID</td>
+              <td>
+                  $!taobaoItemDO.taobaoUserId
+              </td>
+          </tr>
+
+                <tr>
+              <td>类目ID</td>
+              <td>
+                  $!taobaoItemDO.cid
+              </td>
+          </tr>
+
+                <tr>
+              <td>卖家自定义类目列表</td>
+              <td>
+                  $!taobaoItemDO.sellerCids
+              </td>
+          </tr>
+
+                <tr>
+              <td>图片地址</td>
+              <td>
+                  $!taobaoItemDO.picUrl
+              </td>
+          </tr>
+
+                <tr>
+              <td>数量</td>
+              <td>
+                  $!taobaoItemDO.num
+              </td>
+          </tr>
+
+                <tr>
+              <td>上架时间</td>
+              <td>
+                  $!taobaoItemDO.listTime
+              </td>
+          </tr>
+
+                <tr>
+              <td>下架时间</td>
+              <td>
+                  $!taobaoItemDO.delistTime
+              </td>
+          </tr>
+
+                <tr>
+              <td>价格</td>
+              <td>
+                  $!taobaoItemDO.price
+              </td>
+          </tr>
+
+                <tr>
+              <td>是否有折扣</td>
+              <td>
+                  $!taobaoItemDO.hasDiscount
+              </td>
+          </tr>
+
+                <tr>
+              <td>是否橱窗推荐</td>
+              <td>
+                  $!taobaoItemDO.hasShowcase
+              </td>
+          </tr>
+
+                <tr>
+              <td>商品状态</td>
+              <td>
+                  $!taobaoItemDO.approveStatus
+              </td>
+          </tr>
+
+                <tr>
+              <td>是否虚拟物品</td>
+              <td>
+                  $!taobaoItemDO.isVirtual
+              </td>
+          </tr>
+
+                <tr>
+              <td>商品ID</td>
+              <td>
+                  $!taobaoItemDO.numIid
+              </td>
+          </tr>
+
+                <tr>
+              <td>标题</td>
+              <td>
+                  $!taobaoItemDO.title
+              </td>
+          </tr>
+
+                <tr>
+              <td>卖家昵称</td>
+              <td>
+                  $!taobaoItemDO.nick
+              </td>
+          </tr>
+
+                <tr>
+              <td>类型</td>
+              <td>
+                  $!taobaoItemDO.type
+              </td>
+          </tr>
+
+                <tr>
+              <td>有效期</td>
+              <td>
+                  $!taobaoItemDO.validThru
+              </td>
+          </tr>
+
+                <tr>
+              <td>销售数量</td>
+              <td>
+                  $!taobaoItemDO.soldQuantity
+              </td>
+          </tr>
+
+                <tr>
+              <td>是否违规</td>
+              <td>
+                  $!taobaoItemDO.violation
+              </td>
+          </tr>
+
+        </table>

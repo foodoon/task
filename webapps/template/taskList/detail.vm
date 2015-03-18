@@ -1,0 +1,80 @@
+$!taskList详情
+  <table class="table">
+                <tr>
+              <td>卖家ID</td>
+              <td>
+                  $!taskListDO.sellerId
+              </td>
+          </tr>
+
+                <tr>
+              <td>卖家昵称</td>
+              <td>
+                  $!taskListDO.sellerName
+              </td>
+          </tr>
+
+                <tr>
+              <td>垫付金额</td>
+              <td>
+                  $!taskListDO.amountPay
+              </td>
+          </tr>
+
+                <tr>
+              <td>收益</td>
+              <td>
+                  $!taskListDO.amountFee
+              </td>
+          </tr>
+
+                <tr>
+              <td>商品ID</td>
+              <td>
+                  $!taskListDO.itemId
+              </td>
+          </tr>
+
+                <tr>
+              <td>商品名称</td>
+              <td>
+                  $!taskListDO.itemName
+              </td>
+          </tr>
+
+                <tr>
+              <td>商品URL</td>
+              <td>
+                  $!taskListDO.itemUrl
+              </td>
+          </tr>
+
+                <tr>
+              <td>商品价格</td>
+              <td>
+                  $!taskListDO.itemPic
+              </td>
+          </tr>
+
+                <tr>
+              <td>任务描述</td>
+              <td>
+                  $!taskListDO.descript
+              </td>
+          </tr>
+
+                <tr>
+              <td>任务备注</td>
+              <td>
+                  $!taskListDO.comment
+              </td>
+          </tr>
+
+                <tr>
+              <td>任务状态</td>
+              <td>
+                  $!taskListDO.status
+              </td>
+          </tr>
+
+        </table>

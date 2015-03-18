@@ -1,0 +1,48 @@
+#set($headerMenu = "buyer_user")
+#set($sideMenu = "user_score")
+
+<div class="container">
+    <div class="grid fluid">
+        <div class="row">
+            <div class="span2">
+                #parse("template/buyer/user/sidebar.vm")
+
+            </div>
+            <!--/span contain-->
+            <div class="span10">
+
+                <div class="row">
+                    <table class="table">
+                        <tr>
+                            <td>好评率: $!{userScore}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <table class="table table-responsive">
+                        <thead>
+                        <tr>
+                            <th class="text-left">时间</th>
+                            <th class="text-left">卖家昵称</th>
+                            <th class="text-left">任务商品名</th>
+                            <th class="text-left">任务商品金额</th>
+                            <th class="text-left">分数</th>
+                        </tr>
+                        </thead>
+
+                        #foreach($f in $userScoreVOList)
+                            <tr>
+
+                                <td> $dateHelper.formatYMD( $!f.userScoreDO.gmtCreated )</td>
+                                <td>$!f.taskListDO.sellerName</td>
+                                <td>$!f.taskListDO.itemName</td>
+                                <td> $price.formatCNY($!f.taskListDO.amountFee)</td>
+                                <td>$!f.userScoreDO.score</td>
+                            </tr>
+                        #end
+                    </table>
+
+                </div>
+            </div>
+            <!--/span contain-->
+        </div></div></div>

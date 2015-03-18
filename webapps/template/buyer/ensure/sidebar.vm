@@ -1,0 +1,9 @@
+<nav class="sidebar light">
+        <ul>
+            <li>
+                <a href="$homeServer.getURI('buyer/ensure/detail.htm')" #if($sideMenu == 'ensure_detail') class="active" #end>  <span>安全保障</span></a>
+            </li>
+          
+        </ul>
+
+</nav>

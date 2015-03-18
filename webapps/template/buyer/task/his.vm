@@ -1,0 +1,65 @@
+#set($headerMenu = "buyer_task")
+#set($sideMenu = "task_his")
+
+
+<script language="JavaScript">
+    var _token= "$formTool.newForm($request)";
+</script>
+
+<div class="container">
+    <div class="grid fluid">
+        <div class="row">
+            <div class="span2">
+                #parse("template/buyer/task/sidebar.vm")
+
+            </div>
+            <!--/span contain-->
+            <div class="span10">
+
+                <div class="row-fluid">
+                    <table class="table table-responsive">
+                        <thead>
+                        <tr>
+                            <th class="text-left">搜索入口</th>
+                            <th class="text-left">搜索关键词</th>
+
+                            <th class="text-left">大概位置</th>
+                            <th class="text-left">垫付金额(单位:元)</th>
+                            <th class="text-left">佣金(单位:元)</th>
+                            <th class="text-left">商品图片</th>
+                            <th class="text-left">任务要求</th>
+                            <th class="text-left">掌柜QQ</th>
+                            <th class="text-left">掌柜旺旺</th>
+                            <th class="text-left">商品名称</th>
+                            <th class="text-left">状态</th>
+
+                        </tr>
+                        </thead>
+                        #foreach($f in $acceptVOList)
+                            <tr>
+
+                                <td> $!f.searchUrl</td>
+                                <td> $!f.searchKey</td>
+                                <td> $!f.searchResultLocation</td>
+                                <td> $price.formatCNY($!f.taskListDO.amountPay)</td>
+                                <td> $price.formatCNY($!f.taskListDO.amountFee)</td>
+                                <td><img src="$!f.taskListDO.itemPic" width="80" height="80"/></td>
+
+                                <td>$!f.taskListDO.descript</td>
+                                <td> $!f.seller.qq</td>
+                                <td> $!f.seller.wangwang</td>
+                                <td> $f.taskListDO.itemName</td>
+                                <td> $enum.i('guda.task.biz.enums.TaskAcceptStatusEnum',$f.taskAcceptDO.status)</td>
+
+                            </tr>
+                        #end
+                    </table>
+
+                    $tile.load('template/common/page.vm').param('query',$query).param('path','buyer/task/ing.htm')
+                </div>
+            </div>
+            <!--/span contain-->
+        </div>
+    </div>
+</div>
+<script src="$!homeServer.getURI("assets/js/buyer.task.ing.js")"></script>

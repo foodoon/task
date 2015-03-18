@@ -1,0 +1,60 @@
+编辑
+
+<form name="userEditForm" action="$!homeServer.getURI("user/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("userEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+                #springBind("userEditForm.loginName")
+          <tr>
+              <td>登录名</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("userEditForm.qq")
+          <tr>
+              <td>QQ</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("userEditForm.wangwang")
+          <tr>
+              <td>旺旺</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("userEditForm.mail")
+          <tr>
+              <td>邮箱</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("userEditForm.phone")
+          <tr>
+              <td>手机</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("userEditForm.userType")
+          <tr>
+              <td>用户类型</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

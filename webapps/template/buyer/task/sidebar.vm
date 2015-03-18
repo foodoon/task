@@ -1,0 +1,14 @@
+<nav class="sidebar light">
+    <ul>
+        <li>
+            <a href="$homeServer.getURI('buyer/task/list.htm')" #if($sideMenu == 'task_list') class="active" #end> <span>可接手的任务</span></a>
+        </li>
+        <li>
+            <a href="$homeServer.getURI('buyer/task/ing.htm')" #if($sideMenu == 'task_ing') class="active" #end><span>进行中的任务</span></a>
+        </li>
+        <li>
+            <a href="$homeServer.getURI('buyer/task/his.htm')" #if($sideMenu == 'task_his') class="active" #end> <span>我的历史任务</span></a>
+        </li>
+    </ul>
+
+</nav>

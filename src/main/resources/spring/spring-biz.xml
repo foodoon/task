@@ -1,0 +1,34 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:cache="http://www.springframework.org/schema/cache" xsi:schemaLocation="http://www.springframework.org/schema/cache         http://www.springframework.org/schema/cache/spring-cache-3.1.xsd         http://www.springframework.org/schema/beans         http://www.springframework.org/schema/beans/spring-beans-3.1.xsd         http://www.springframework.org/schema/context         http://www.springframework.org/schema/context/spring-context-3.1.xsd         http://www.springframework.org/schema/mvc         http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+ <bean id="userBiz" class="guda.task.biz.impl.UserBizImpl"/>
+ <bean id="accountBiz" class="guda.task.biz.impl.AccountBizImpl"/>
+ <bean id="bankBiz" class="guda.task.biz.impl.BankBizImpl"/>
+ <bean id="taskListBiz" class="guda.task.biz.impl.TaskListBizImpl"/>
+ <bean id="taskAcceptBiz" class="guda.task.biz.impl.TaskAcceptBizImpl"/>
+ <bean id="taskPropsBiz" class="guda.task.biz.impl.TaskPropsBizImpl"/>
+ <bean id="taobaoUserBiz" class="guda.task.biz.impl.TaobaoUserBizImpl"/>
+ <bean id="taobaoAPIConfig" class="guda.task.web.action.taobao.TaobaoAPIConfig">
+  <property name="appKey" value="${taobao.appKey}"/>
+  <property name="appSecret" value="${taobao.appSecret}"/>
+  <property name="defaultUrl" value="${taobao.defaultUrl}"/>
+  <property name="redirectUri" value="${taobao.redirectUri}"/>
+  <property name="taobaoOauthUrl" value="${taobao.taobaoOauthUrl}"/>
+  <property name="taokenUri" value="${taobao.taokenUri}"/>
+  <property name="apiUrl" value="${taobao.apiUrl}"/>
+ </bean>
+ <bean id="taobaoItemBiz" class="guda.task.biz.impl.TaobaoItemBizImpl"/>
+ <bean id="taobaoOrderBiz" class="guda.task.biz.impl.TaobaoOrderBizImpl"/>
+ <bean id="taobaoSellerBiz" class="guda.task.biz.impl.TaobaoSellerBizImpl"/>
+ <bean id="taobaoShopBiz" class="guda.task.biz.impl.TaobaoShopBizImpl"/>
+ <bean id="userScoreBiz" class="guda.task.biz.impl.UserScoreBizImpl"/>
+ <bean id="accountDetailBiz" class="guda.task.biz.impl.AccountDetailBizImpl"/>
+ <bean id="adminTaskBiz" class="guda.task.biz.impl.AdminTaskBizImpl"/>
+ <bean id="adminUserBiz" class="guda.task.biz.impl.AdminUserBizImpl"/>
+ <bean id="userScoreStatBiz" class="guda.task.biz.impl.UserScoreStatBizImpl"/>
+
+    <bean id="fileHelper" class="guda.task.biz.helper.FileHelper">
+        <property name="fileSever" value="${file.server}"></property>
+        <property name="fileDir" value="${file.dir}"></property>
+        <property name="maxSize" value="${file.maxSize}"></property>
+    </bean>
+</beans>

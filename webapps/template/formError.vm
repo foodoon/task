@@ -1,0 +1,5 @@
+#set($layout="template/layout/errorLayout.vm")
+<div class="alert form-center">
+            表单重复提交
+
+</div>

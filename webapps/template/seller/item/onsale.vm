@@ -1,0 +1,60 @@
+#set($headerMenu = "seller_item")
+#set($sideMenu = "item_onsale")
+
+
+<div class="container">
+    <div class="grid fluid">
+        <div class="row">
+            <div class="span2">
+                #parse("template/seller/item/sidebar.vm")
+
+            </div>
+            <!--/span contain-->
+            <div class="span10">
+                <nav class="breadcrumbs">
+                    <ul>
+                        <li><a href="$!homeServer.getURI("seller/item/onsale.htm")">商品管理</a></li>
+                        <li class="active"><a href="#">所有商品</a></li>
+                    </ul>
+                </nav>
+                <div class="row">
+                    <div class="pull-right">
+                        <a href="$homeServer.getURI('seller/item/createOnsale.htm')" class="button default">
+                            添加商品
+                        </a>
+                    </div>
+
+                </div>
+                <div class="row-fluid">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th class="text-left">标题</th>
+                            <th class="text-left">图片</th>
+                            <th class="text-left">垫付金额(单位:元)</th>
+                            <th class="text-left">操作</th>
+                        </tr>
+                        </thead>
+                        #set($_token = $formTool.newForm($request))
+                        #foreach($f in $taobaoItemDOList)
+                            <tr>
+                                <td> $!f.title</td>
+                                <td><img src="$!f.picUrl" width="30" height="30"/></td>
+                                <td>$price.formatCNY($!f.price)</td>
+                                <td>
+                                    <a href="$!homeServer.getURI("seller/act/create.htm").addQueryData('id',"$!f.id")">发布活动</a>
+                                    <a href="$!homeServer.getURI("seller/item/edit.htm").addQueryData('id',"$!f.id")">修改</a>
+
+                                    <a href="$!homeServer.getURI("seller/item/doDelete.htm").addQueryData('id',"$!f.id").addQueryData('_form_token',"$_token")"
+                                       onclick="return confirm('确定删除吗?')">删除</a>
+                                </td>
+                            </tr>
+                        #end
+                    </table>
+                    $tile.load('template/common/page.vm').param('query',$query).param('path','seller/item/onsale.htm')
+                </div>
+            </div>
+            <!--/span contain-->
+        </div>
+    </div>
+</div>

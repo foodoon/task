@@ -1,0 +1,87 @@
+#set($headerMenu = "seller_act")
+#set($sideMenu = "act_his")
+
+
+
+<div class="container">
+    <div class="grid fluid">
+        <div class="row">
+            <div class="span2">
+                #parse("template/seller/act/sidebar.vm")
+
+            </div>
+            <!--/span contain-->
+            <div class="span10">
+                <nav class="breadcrumbs">
+                    <ul>
+                        <li><a href="$!homeServer.getURI("seller/act/ing.htm")">任务管理</a></li>
+                        <li><a href="$!homeServer.getURI("seller/act/his.htm")">历史任务</a></li>
+                        <li class="active"><a href="#">任务评分</a></li>
+                    </ul>
+                </nav>
+                <div class="row-fluid">
+                  <form name="scoreForm" method="post" action="$homeServer.getURI('/seller/act/doScore.htm')">
+                      <input  type="hidden" name="_form_token" value="$formTool.newForm($request)" />
+                      #springBind("scoreForm.taskId")
+                      <input  type="hidden" name="${status.expression}" value="$!taskListDO.id" />
+                      #springBind("scoreForm.score")
+                      <input id="score_id" type="hidden" name="${status.expression}" value="$!{status.value}" />
+
+                      <table class="table">
+                      <tr>
+                      <td>拍客旺旺</td><td>$!buyer.wangwang</td><td>拍客QQ</td><td>$!buyer.qq</td>
+                      </tr>
+                      <tr>
+                      <td>商品名称:</td><td>$!taskListDO.itemName</td><td>商品价格:</td><td>$price.formatCNY($!taskListDO.amountPay)</td>
+                      </tr>
+                      <tr>
+                          <td colspan="2">
+                              服务评分:
+                              <div style="height: auto;" id="rating_1" class="fg-green rating active">
+                                  <ul><li class="rated" title="bad"></li>
+                                      <li title="poor"></li>
+                                      <li title="regular"></li>
+                                      <li title="good"></li>
+                                      <li title="gorgeous"></li></ul>
+                                  <span class="score-hint">当前得分: 0</span></div>
+                              #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                          </td>
+                      </tr>
+
+                      <tr>
+                          <td colspan="2">
+                              #springBind("scoreForm.msg")
+                              附加留言
+                              <textarea cols="70" rows="5" name="$!{status.expression}" >$!{status.value}</textarea>
+                          </td>
+                      </tr>
+                          <tr>
+                              <td>
+                                  <input type="submit" name="提交">
+                              </td>
+                          </tr>
+                  </table>
+                    </form>
+                </div>
+            </div>
+            <!--/span contain-->
+        </div>
+    </div></div>
+
+
+<script>
+    $(function(){
+        $("#rating_1").rating({
+            static: false,
+            score: 0,
+            stars: 5,
+            showHint: true,
+            showScore: true,
+            click: function(value, rating){
+
+                $("#score_id").val(value);
+                rating.rate(value);
+            }
+        });
+    });
+</script>

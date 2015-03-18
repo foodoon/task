@@ -1,0 +1,30 @@
+<a  class="btn btn-default"  href="$!homeServer.getURI("user/create.htm")" >新建</a>
+
+<table  class="table">
+    <thead>
+ <tr>
+              <th class="text-left">登录名</th>
+              <th class="text-left">QQ</th>
+              <th class="text-left">旺旺</th>
+              <th class="text-left">邮箱</th>
+              <th class="text-left">手机</th>
+              <th class="text-left">用户类型</th>
+          <th class="text-left">操作</th>
+ </tr>
+    </thead>
+#foreach($f in $userDOList)
+  <tr>
+               <td> $!f.loginName</td>
+               <td> $!f.qq</td>
+               <td> $!f.wangwang</td>
+               <td> $!f.mail</td>
+               <td> $!f.phone</td>
+               <td> $!f.userType</td>
+          <td><a href="$!homeServer.getURI("user/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
+    <td><a href="$!homeServer.getURI("user/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
+      <td><a href="$!homeServer.getURI("user/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
+ </tr>
+#end
+</table>
+
+$tile.load('template/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')

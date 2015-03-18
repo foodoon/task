@@ -1,0 +1,10 @@
+<nav class="sidebar light">
+
+        <ul>
+            <li>
+                <a href="$homeServer.getURI('seller/order/index.htm')" #if($sideMenu == 'order_index') class="active" #end> <i class="icon-link"></i> <span>所有订单</span></a>
+            </li>
+
+        </ul>
+
+</nav>

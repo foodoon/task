@@ -1,0 +1,24 @@
+<a  class="btn btn-default"  href="$!homeServer.getURI("taskAccept/create.htm")" >新建</a>
+
+<table  class="table">
+    <thead>
+ <tr>
+              <th class="text-left">任务ID</th>
+              <th class="text-left">用户ID</th>
+              <th class="text-left">任务状态</th>
+          <th class="text-left">操作</th>
+ </tr>
+    </thead>
+#foreach($f in $taskAcceptDOList)
+  <tr>
+               <td> $!f.taskId</td>
+               <td> $!f.userId</td>
+               <td> $!f.status</td>
+          <td><a href="$!homeServer.getURI("taskAccept/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
+    <td><a href="$!homeServer.getURI("taskAccept/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
+      <td><a href="$!homeServer.getURI("taskAccept/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
+ </tr>
+#end
+</table>
+
+$tile.load('template/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')

@@ -1,0 +1,65 @@
+#set($headerMenu = "seller_user")
+#set($sideMenu = "user_account")
+
+<div class="container">
+    <div class="grid fluid">
+        <div class="row">
+            <div class="span2">
+                #parse("template/seller/user/sidebar.vm")
+
+            </div>
+            <!--/span contain-->
+            <div class="span10">
+
+                <div class="row">
+                    <table class="table">
+                        <tr>
+                            <td>可用余额:
+                                $price.formatCNY($!{accountDO.amount})</td>
+                            <td>冻结余额:
+                                $price.formatCNY($!{accountDO.freeze})</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <p>
+                        最近交易记录: <a class="pull-right" href="$homeServer.getURI("seller/user/account/list.htm")">查看所有交易记录</a>
+                    </p>
+                    <table class="table table-responsive">
+                        <thead>
+                        <tr>
+                            <th class="text-left">时间</th>
+                            <th class="text-left">交易号</th>
+                            <th class="text-left">资金变动</th>
+                            <th class="text-left">说明</th>
+                            <th class="text-left">任务商品名称</th>
+                            <th class="text-left">任务商品金额</th>
+
+
+                        </tr>
+                        </thead>
+
+                        #foreach($f in $accountDetailVOList)
+                            <tr>
+
+                                <td> $dateHelper.formatYMD( $!f.accountDetailDO.gmtCreated )</td>
+                                <td> $!f.accountDetailDO.id</td>
+                                <td>
+                                    #if($!f.accountDetailDO.direction == 1)
+                                        +
+                                    #else
+                                        -
+                                    #end $price.formatCNY($!f.accountDetailDO.amount)</td>
+                                <td>$!f.accountDetailDO.remark</td>
+                                <td>$!f.taskListDO.itemName</td>
+                                <td> $price.formatCNY($!f.taskListDO.amountFee)</td>
+
+
+                            </tr>
+                        #end
+                    </table>
+
+                </div>
+            </div>
+            <!--/span contain-->
+        </div></div></div>

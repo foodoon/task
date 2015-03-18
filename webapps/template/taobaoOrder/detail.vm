@@ -1,0 +1,178 @@
+$!taobaoOrder详情
+  <table class="table">
+                <tr>
+              <td>用户ID</td>
+              <td>
+                  $!taobaoOrderDO.taobaoUserId
+              </td>
+          </tr>
+
+                <tr>
+              <td>卖家昵称</td>
+              <td>
+                  $!taobaoOrderDO.sellerNick
+              </td>
+          </tr>
+
+                <tr>
+              <td>图片地址</td>
+              <td>
+                  $!taobaoOrderDO.picPath
+              </td>
+          </tr>
+
+                <tr>
+              <td>实付金额</td>
+              <td>
+                  $!taobaoOrderDO.payment
+              </td>
+          </tr>
+
+                <tr>
+              <td>收货方姓名</td>
+              <td>
+                  $!taobaoOrderDO.receiverName
+              </td>
+          </tr>
+
+                <tr>
+              <td>收货地区</td>
+              <td>
+                  $!taobaoOrderDO.receiverState
+              </td>
+          </tr>
+
+                <tr>
+              <td>收货地址</td>
+              <td>
+                  $!taobaoOrderDO.receiverAddress
+              </td>
+          </tr>
+
+                <tr>
+              <td>收货邮编</td>
+              <td>
+                  $!taobaoOrderDO.receiverZip
+              </td>
+          </tr>
+
+                <tr>
+              <td>收货方手机号</td>
+              <td>
+                  $!taobaoOrderDO.receiverMobile
+              </td>
+          </tr>
+
+                <tr>
+              <td>收货方电话</td>
+              <td>
+                  $!taobaoOrderDO.receiverPhone
+              </td>
+          </tr>
+
+                <tr>
+              <td>实收金额</td>
+              <td>
+                  $!taobaoOrderDO.receivedPayment
+              </td>
+          </tr>
+
+                <tr>
+              <td>交易编号</td>
+              <td>
+                  $!taobaoOrderDO.tid
+              </td>
+          </tr>
+
+                <tr>
+              <td>购买数量</td>
+              <td>
+                  $!taobaoOrderDO.num
+              </td>
+          </tr>
+
+                <tr>
+              <td>商品ID</td>
+              <td>
+                  $!taobaoOrderDO.numIid
+              </td>
+          </tr>
+
+                <tr>
+              <td>订单数量</td>
+              <td>
+                  $!taobaoOrderDO.status
+              </td>
+          </tr>
+
+                <tr>
+              <td>交易类型</td>
+              <td>
+                  $!taobaoOrderDO.type
+              </td>
+          </tr>
+
+                <tr>
+              <td>商品价格</td>
+              <td>
+                  $!taobaoOrderDO.price
+              </td>
+          </tr>
+
+                <tr>
+              <td>买家使用积分</td>
+              <td>
+                  $!taobaoOrderDO.pointFee
+              </td>
+          </tr>
+
+                <tr>
+              <td>商品金额</td>
+              <td>
+                  $!taobaoOrderDO.totalFee
+              </td>
+          </tr>
+
+                <tr>
+              <td>订单创建时间</td>
+              <td>
+                  $!taobaoOrderDO.created
+              </td>
+          </tr>
+
+                <tr>
+              <td>买家付款时间</td>
+              <td>
+                  $!taobaoOrderDO.payTime
+              </td>
+          </tr>
+
+                <tr>
+              <td>交易修改时间</td>
+              <td>
+                  $!taobaoOrderDO.modified
+              </td>
+          </tr>
+
+                <tr>
+              <td>交易结束时间</td>
+              <td>
+                  $!taobaoOrderDO.endTime
+              </td>
+          </tr>
+
+                <tr>
+              <td>买家支付宝ID</td>
+              <td>
+                  $!taobaoOrderDO.alipayId
+              </td>
+          </tr>
+
+                <tr>
+              <td>支付宝交易号</td>
+              <td>
+                  $!taobaoOrderDO.alipayNo
+              </td>
+          </tr>
+
+        </table>

@@ -1,0 +1,18 @@
+#set($layout="template/layout/loginLayout.vm")
+
+
+
+          <div class="tile double">
+              <a href="$!homeServer.getURI("reg.htm")" >
+                  <div class="tile-content text-center">
+                      <h3>普通会员注册</h3>
+                  </div>
+                  </a>
+          </div>
+          <div class="tile double">
+              <a href="$!homeServer.getURI("sellerReg.htm")" >
+                  <div class="tile-content text-center">
+                      <h3>掌柜注册</h3>
+                  </div>
+                  </a>
+          </div>

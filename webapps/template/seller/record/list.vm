@@ -1,0 +1,38 @@
+#set($headerMenu = "seller_act")
+#set($sideMenu = "act_ing")
+
+
+
+<div class="container">
+    <div class="grid fluid">
+
+        <div class="row">
+
+            <!--/span contain-->
+            <div class="span12">
+                <nav class="breadcrumbs">
+                    <ul>
+                        <li><a href="$!homeServer.getURI("seller/act/ing.htm")">任务管理</a></li>
+                        <li class="active"><a href="#">拍客过程记录</a></li>
+                    </ul>
+                </nav>
+
+                #foreach($r in $recordVOList)
+                <div class="tile double">
+
+                    <div class="tile-content image">
+                       <a href="$r.imgUrl" target="_blank"><img src="$r.imgUrl"></a>
+                    </div>
+                    <div class="brand bg-dark opacity">
+                        <span class="text">
+                        记录时间:$r.time
+                        </span>
+                    </div>
+                </div>
+                #end
+
+            </div>
+            <!--/span contain-->
+        </div>
+    </div>
+</div>

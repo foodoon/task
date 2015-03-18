@@ -1,0 +1,68 @@
+<a  class="btn btn-default"  href="$!homeServer.getURI("taobaoOrder/create.htm")" >新建</a>
+
+<table  class="table">
+    <thead>
+ <tr>
+              <th class="text-left">用户ID</th>
+              <th class="text-left">卖家昵称</th>
+              <th class="text-left">图片地址</th>
+              <th class="text-left">实付金额</th>
+              <th class="text-left">收货方姓名</th>
+              <th class="text-left">收货地区</th>
+              <th class="text-left">收货地址</th>
+              <th class="text-left">收货邮编</th>
+              <th class="text-left">收货方手机号</th>
+              <th class="text-left">收货方电话</th>
+              <th class="text-left">实收金额</th>
+              <th class="text-left">交易编号</th>
+              <th class="text-left">购买数量</th>
+              <th class="text-left">商品ID</th>
+              <th class="text-left">订单数量</th>
+              <th class="text-left">交易类型</th>
+              <th class="text-left">商品价格</th>
+              <th class="text-left">买家使用积分</th>
+              <th class="text-left">商品金额</th>
+              <th class="text-left">订单创建时间</th>
+              <th class="text-left">买家付款时间</th>
+              <th class="text-left">交易修改时间</th>
+              <th class="text-left">交易结束时间</th>
+              <th class="text-left">买家支付宝ID</th>
+              <th class="text-left">支付宝交易号</th>
+          <th class="text-left">操作</th>
+ </tr>
+    </thead>
+#foreach($f in $taobaoOrderDOList)
+  <tr>
+               <td> $!f.taobaoUserId</td>
+               <td> $!f.sellerNick</td>
+               <td> $!f.picPath</td>
+               <td> $!f.payment</td>
+               <td> $!f.receiverName</td>
+               <td> $!f.receiverState</td>
+               <td> $!f.receiverAddress</td>
+               <td> $!f.receiverZip</td>
+               <td> $!f.receiverMobile</td>
+               <td> $!f.receiverPhone</td>
+               <td> $!f.receivedPayment</td>
+               <td> $!f.tid</td>
+               <td> $!f.num</td>
+               <td> $!f.numIid</td>
+               <td> $!f.status</td>
+               <td> $!f.type</td>
+               <td> $!f.price</td>
+               <td> $!f.pointFee</td>
+               <td> $!f.totalFee</td>
+               <td> $!f.created</td>
+               <td> $!f.payTime</td>
+               <td> $!f.modified</td>
+               <td> $!f.endTime</td>
+               <td> $!f.alipayId</td>
+               <td> $!f.alipayNo</td>
+          <td><a href="$!homeServer.getURI("taobaoOrder/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
+    <td><a href="$!homeServer.getURI("taobaoOrder/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
+      <td><a href="$!homeServer.getURI("taobaoOrder/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
+ </tr>
+#end
+</table>
+
+$tile.load('home/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')

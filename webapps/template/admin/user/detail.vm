@@ -1,0 +1,100 @@
+#set($headerMenu = "admin_user")
+#set($sideMenu = "user_detail")
+
+<div class="container">
+    <div class="grid fluid">
+        <div class="row">
+            <nav class="breadcrumbs">
+                <ul>
+                    <li><a href="$!homeServer.getURI("admin/user/index.htm")">用户管理</a></li>
+                    <li class="active"><a href="#">用户详情</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <table class="table">
+                    <tr>
+                        <td>登录名</td>
+                        <td>
+                            $!userDO.loginName
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>QQ</td>
+                        <td>
+                            $!userDO.qq
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>旺旺</td>
+                        <td>
+                            $!userDO.wangwang
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>邮箱</td>
+                        <td>
+                            $!userDO.mail
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>手机</td>
+                        <td>
+                            $!userDO.phone
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>用户类型</td>
+                        <td>
+                            $enum.f('guda.task.biz.enums.UserTypeEnum',$!userDO.userType)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>状态</td>
+                        <td>
+                            $enum.f('guda.task.biz.enums.UserStatusEnum',$!userDO.status)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>店铺地址</td>
+                        <td>
+                            $!userDO.shopUrl
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>淘宝昵称</td>
+                        <td>
+                            $!userDO.taobaoUserNick
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>推荐人QQ</td>
+                        <td>
+                            $!userDO.recommendQq
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>账户金额，单位：元</td>
+                        <td>
+                            $!price.formatCNY($!accountDO.amount)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>冻结金额，单位：元</td>
+                        <td>
+                           $!price.formatCNY($!accountDO.freeze)
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

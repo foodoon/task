@@ -1,0 +1,49 @@
+#set($headerMenu = "seller_act")
+#set($sideMenu = "act_onsale")
+
+
+
+<div class="container">
+    <div class="grid fluid">
+        <div class="row">
+        <div class="span2">
+            #parse("template/seller/act/sidebar.vm")
+
+        </div>
+        <!--/span contain-->
+        <div class="span10">
+            <nav class="breadcrumbs">
+                <ul>
+                    <li><a href="$!homeServer.getURI("seller/act/ing.htm")">任务管理</a></li>
+                    <li class="active"><a href="#">销售中的商品</a></li>
+                </ul>
+            </nav>
+
+            <div class="row-fluid">
+                <table  class="table">
+                    <thead>
+                    <tr>
+                        <th class="text-left">标题</th>
+                        <th class="text-left">图片</th>
+                        <th class="text-left">价格</th>
+                        <th class="text-left">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    #foreach($f in $taobaoItemDOList)
+                        <tr>
+                            <td> $!f.title</td>
+                            <td><img src="$!f.picUrl"  width="30" height="30"/></td>
+                            <td>$price.formatCNY($!f.price)</td>
+                            <td><a href="$!homeServer.getURI("seller/act/create.htm").addQueryData('id',"$!f.id")" >发布活动</a></td>
+
+                        </tr>
+                    #end
+                    </tbody>
+                </table>
+
+                $tile.load('template/common/page.vm').param('query',$query).param('path','seller/act/onsale.htm')
+            </div>
+        </div>
+        <!--/span contain-->
+    </div></div></div>

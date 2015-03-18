@@ -1,0 +1,66 @@
+#set($headerMenu = "seller_act")
+#set($sideMenu = "act_onsale")
+
+
+<div class="container">
+    <div class="grid fluid">
+        <div class="row">
+            <div class="span2">
+                #parse("template/seller/item/sidebar.vm")
+            </div>
+            <!--/span contain-->
+            <div class="span10">
+                <nav class="breadcrumbs">
+                    <ul>
+                        <li><a href="$!homeServer.getURI("seller/item/onsale.htm")">商品管理</a></li>
+                        <li class="active"><a href="#">修改商品</a></li>
+                    </ul>
+                </nav>
+                <form name="taobaoItemEditForm" action="$!homeServer.getURI("seller/item/doUpdate.htm")" method="post">
+                    <input type="hidden" name="_form_token" value="$formTool.newForm($request)"/>
+                    #springBind("taobaoItemEditForm.id")
+                    <input type="hidden" name="${status.expression}" value="$!status.value"/>
+                    <table class="table">
+                        #springBind("taobaoItemEditForm.itemUrl")
+                        <tr>
+                            <td>淘宝商品链接</td>
+                            <td>
+                                <input class="size5" type="text" name="${status.expression}" value="$!status.value"/>
+                                #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                            </td>
+                        </tr>
+                        #springBind("taobaoItemEditForm.title")
+                        <tr>
+                            <td>标题</td>
+                            <td>
+                                <input class="size5" type="text" name="${status.expression}" value="$!status.value"/>
+                                #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                            </td>
+                        </tr>
+                        #springBind("taobaoItemEditForm.picUrl")
+                        <tr>
+                            <td>商品图片地址</td>
+                            <td>
+                                <input class="size5" type="text" name="${status.expression}" value="$!status.value"/>
+                                #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                            </td>
+                        </tr>
+                        #springBind("taobaoItemEditForm.price")
+                        <tr>
+                            <td>垫付金额（单位:元,精确到元）</td>
+                            <td>
+                                <input class="size5" type="text" name="${status.expression}" value="$!status.value"/>
+                                #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" class="btn" value="提交"/></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <!--/span contain-->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+#set($headerMenu = "seller_act")
+#set($sideMenu = "act_index")
+
+
+<div class="container">
+    <div class="grid fluid">
+    <div class="row">
+        <div class="span2">
+            #parse("template/seller/act/sidebar.vm")
+
+        </div>
+        <!--/span contain-->
+        <div class="span10">
+            <div class="row-fluid table-container">
+                <div class="btn-group">
+                    <a href="$homeServer.getURI('seller/act/create.htm')" class="btn btn-success">
+                        创建活动
+                    </a>
+
+                </div>
+            </div>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr>
+
+                        <th class="text-left">商品ID</th>
+                        <th class="text-left">商品名称</th>
+                        <th class="text-left">商品URL</th>
+                        <th class="text-left">商品价格</th>
+
+                        <th class="text-left">活动状态</th>
+                        <th class="text-left">操作</th>
+                    </tr>
+                    </thead>
+                    #foreach($f in $taskListDOList)
+                        <tr>
+                            <td> $!f.itemId</td>
+                            <td> $!f.itemName</td>
+                            <td> $!f.itemUrl</td>
+                            <td> $!f.itemPic</td>
+                            <td> $!f.status</td>
+
+                            <td>
+                                <a href="$!homeServer.getURI("seller/act/detail.htm").addQueryData('id',"$!f.id")">查看详情</a>
+                                <a href="$!homeServer.getURI("seller/act/doDelete.htm").addQueryData('id',"$!f.id")"
+                                   onclick="return confirm('确定删除吗?')">删除</a></td>
+                        </tr>
+                    #end
+                </table>
+
+                $tile.load('template/common/page.vm').param('query',$query).param('path','seller/act/index.htm')
+            </div>
+        </div>
+        <!--/span contain-->
+    </div>
+        </div>
+    </div>

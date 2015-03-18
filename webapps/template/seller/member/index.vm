@@ -1,0 +1,2 @@
+#set($headerMenu = "seller_member")
+#set($sideMenu = "member_index")

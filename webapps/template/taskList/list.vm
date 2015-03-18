@@ -1,0 +1,83 @@
+#set($headerMenu = "taskList")
+#set($sideMenu = "list")
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span3">
+            <aside>
+                <div id="sidebar" class="nav-collapse ">
+                    <!-- sidebar menu goes here-->
+
+                    <ul class="sidebar-menu" id="nav-accordion">
+                        <li class="">
+                            <a href="/manage/article/list.htm" class="active"> <i class="icon-book"></i>
+                                <span>待接受任务</span></a>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="/manage/headline/list.htm"> <i class="icon-desktop"></i> <span>进行中的任务</span></a>
+                        </li>
+                        <li class="">
+                            <a href="/manage/folder/list.htm"> <i class="icon-folder-open"></i> <span>我的历史任务</span></a>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+            </aside>
+            <!--sidebar end-->
+            <!--/.well -->
+        </div>
+        <!--/span contain-->
+        <div class="span9">
+            <div class="row-fluid">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="text-left">卖家ID</th>
+                        <th class="text-left">卖家昵称</th>
+                        <th class="text-left">垫付金额</th>
+                        <th class="text-left">收益</th>
+                        <th class="text-left">商品ID</th>
+                        <th class="text-left">商品名称</th>
+                        <th class="text-left">商品URL</th>
+                        <th class="text-left">商品价格</th>
+                        <th class="text-left">任务描述</th>
+                        <th class="text-left">任务备注</th>
+                        <th class="text-left">任务状态</th>
+                        <th class="text-left">操作</th>
+                    </tr>
+                    </thead>
+                    #foreach($f in $taskListDOList)
+                        <tr>
+                            <td> $!f.sellerId</td>
+                            <td> $!f.sellerName</td>
+                            <td> $!f.amountPay</td>
+                            <td> $!f.amountFee</td>
+                            <td> $!f.itemId</td>
+                            <td> $!f.itemName</td>
+                            <td> $!f.itemUrl</td>
+                            <td> $!f.itemPic</td>
+                            <td> $!f.descript</td>
+                            <td> $!f.comment</td>
+                            <td> $!f.status</td>
+                            <td><a href="$!homeServer.getURI("taskList/edit.htm").addQueryData('id',"$!f.id")">编辑</a>
+                            </td>
+                            <td>
+                                <a href="$!homeServer.getURI("taskList/detail.htm").addQueryData('id',"$!f.id")">查看详情</a>
+                            </td>
+                            <td><a href="$!homeServer.getURI("taskList/doDelete.htm").addQueryData('id',"$!f.id")"
+                                   onclick="return confirm('确定删除吗?')">删除</a></td>
+                        </tr>
+                    #end
+                </table>
+
+                $tile.load('template/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')
+            </div>
+        </div>
+        <!--/span contain-->
+    </div>
+
+
+
+

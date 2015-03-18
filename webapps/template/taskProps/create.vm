@@ -1,0 +1,35 @@
+新增
+
+<form name="taskPropsForm" action="$!homeServer.getURI("taskProps/doCreate.htm")" method="post">
+  <table class="table">
+    #springBind("taskPropsForm.taskId")
+    <tr>
+        <td>任务ID</td>
+        <td>
+            <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+            #foreach($error in $status.errorMessages) <b>$error</b>  #end
+        </td>
+    </tr>
+    #springBind("taskPropsForm.requireKey")
+    <tr>
+        <td>属性</td>
+        <td>
+            <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+            #foreach($error in $status.errorMessages) <b>$error</b>  #end
+        </td>
+    </tr>
+    #springBind("taskPropsForm.requireValue")
+    <tr>
+        <td>属性值</td>
+        <td>
+            <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+            #foreach($error in $status.errorMessages) <b>$error</b>  #end
+        </td>
+    </tr>
+
+	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

@@ -1,0 +1,100 @@
+编辑
+
+<form name="taskListEditForm" action="$!homeServer.getURI("taskList/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("taskListEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+                #springBind("taskListEditForm.sellerId")
+          <tr>
+              <td>卖家ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taskListEditForm.sellerName")
+          <tr>
+              <td>卖家昵称</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taskListEditForm.amountPay")
+          <tr>
+              <td>垫付金额</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taskListEditForm.amountFee")
+          <tr>
+              <td>收益</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taskListEditForm.itemId")
+          <tr>
+              <td>商品ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taskListEditForm.itemName")
+          <tr>
+              <td>商品名称</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taskListEditForm.itemUrl")
+          <tr>
+              <td>商品URL</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taskListEditForm.itemPic")
+          <tr>
+              <td>商品价格</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taskListEditForm.descript")
+          <tr>
+              <td>任务描述</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taskListEditForm.comment")
+          <tr>
+              <td>任务备注</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taskListEditForm.status")
+          <tr>
+              <td>任务状态</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

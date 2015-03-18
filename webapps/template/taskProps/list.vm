@@ -1,0 +1,24 @@
+<a  class="btn btn-default"  href="$!homeServer.getURI("taskProps/create.htm")" >新建</a>
+
+<table  class="table">
+    <thead>
+ <tr>
+              <th class="text-left">任务ID</th>
+              <th class="text-left">属性</th>
+              <th class="text-left">属性值</th>
+          <th class="text-left">操作</th>
+ </tr>
+    </thead>
+#foreach($f in $taskPropsDOList)
+  <tr>
+               <td> $!f.taskId</td>
+               <td> $!f.requireKey</td>
+               <td> $!f.requireValue</td>
+          <td><a href="$!homeServer.getURI("taskProps/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
+    <td><a href="$!homeServer.getURI("taskProps/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
+      <td><a href="$!homeServer.getURI("taskProps/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
+ </tr>
+#end
+</table>
+
+$tile.load('template/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')

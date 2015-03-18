@@ -1,0 +1,98 @@
+#set($headerMenu = "admin_user")
+#set($sideMenu = "user_index")
+<script language="JavaScript">
+    var _token= "$formTool.newForm($request)";
+</script>
+<div class="container">
+    <div class="grid fluid">
+
+        <div class="row">
+            <div class="span12">
+                <form   name="adminUserSearchForm" action="$!homeServer.getURI("admin/user/index.htm")" method="post">
+                    <table>
+                        <tr>
+                            <td>状态</td>
+                            <td>
+                                #springBind("adminUserSearchForm.status")
+
+                                <select name="${status.expression}">
+                                    <option value="" >全部</option>
+                                    #foreach($e in $enum.toMap('guda.task.biz.enums.UserStatusEnum').entrySet())
+                                        <option value="$e.key"
+                                            #if($e.key == $!status.value)
+                                                selected="true"
+                                            #end> $e.value</option>
+                                    #end
+
+                                </select>
+                            </td>
+                            <td>登录名</td>
+                            <td>
+                                #springBind("adminUserSearchForm.loginName")
+                                <input name="${status.expression}" value="$!status.value" class=" text" type="text">
+                            </td>
+                            <td>旺旺</td>
+                            #springBind("adminUserSearchForm.wangwang")
+                            <td>
+                                <input name="${status.expression}" value="$!status.value"   class=" text" type="text" >
+
+                            </td>
+                            <td><input  type="submit" value="搜索"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <!--search row end-->
+        <div class="row">
+            <div class="span12">
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th class="text-left">登录名</th>
+
+                        <th class="text-left">QQ</th>
+                        <th class="text-left">推荐人QQ</th>
+                        <th class="text-left">旺旺</th>
+                        <th class="text-left">邮箱</th>
+                        <th class="text-left">手机</th>
+                        <th class="text-left">用户类型</th>
+                        <th class="text-left">状态</th>
+                        <th class="text-left">操作</th>
+
+                    </tr>
+                    </thead>
+                    #foreach($f in $userDOList)
+                        <tr>
+                            <td> $!f.loginName</td>
+                            <td> $!f.qq</td>
+                            <td> $!f.recommendQq</td>
+                            <td> $!f.wangwang</td>
+                            <td> $!f.mail</td>
+                            <td> $!f.phone</td>
+                            <td> $enum.f('guda.task.biz.enums.UserTypeEnum',$!f.userType)</td>
+                            <td> $enum.f('guda.task.biz.enums.UserStatusEnum',$!f.status)</td>
+                            <td>
+                                <a href="$!homeServer.getURI("admin/user/detail.htm").addQueryData('id',"$!f.id")" >详情</a>
+                                #if($!f.status == 0)
+                                   <a href="" class="a_pass" id="$!f.id">审核通过</a>
+                                #elseif($!f.status == 1)
+                                    <a href="" class="a_forbit" id="$!f.id">禁用</a>
+                                #elseif($!f.status == 2)
+                                    <a href="" class="a_reuse" id="$!f.id">恢复</a>
+                                #elseif($!f.status == 3)
+                                    <a href="" class="a_reuse" id="$!f.id">恢复</a>
+                               #end
+                                <a href="$!homeServer.getURI("admin/user/charge.htm").addQueryData('id',"$!f.id")" >充值</a>
+                            </td>
+                        </tr>
+                    #end
+                </table>
+
+                $tile.load('template/common/page.vm').param('query',$query).param('path','admin/user/index.htm')
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="$!homeServer.getURI("assets/js/admin.user.index.js")"></script>

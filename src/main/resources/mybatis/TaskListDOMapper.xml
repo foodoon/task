@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="guda.task.dao.TaskListDOMapper">
+  <resultMap id="BaseResultMap" type="guda.task.dao.domain.TaskListDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="seller_id" jdbcType="BIGINT" property="sellerId" />
+    <result column="seller_name" jdbcType="VARCHAR" property="sellerName" />
+    <result column="amount_pay" jdbcType="BIGINT" property="amountPay" />
+    <result column="amount_fee" jdbcType="BIGINT" property="amountFee" />
+    <result column="item_id" jdbcType="VARCHAR" property="itemId" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="item_url" jdbcType="VARCHAR" property="itemUrl" />
+    <result column="item_pic" jdbcType="VARCHAR" property="itemPic" />
+    <result column="descript" jdbcType="VARCHAR" property="descript" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="scored" jdbcType="INTEGER" property="scored" />
+    <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, seller_id, seller_name, amount_pay, amount_fee, item_id, item_name, item_url, 
+    item_pic, descript, comment, status, scored, gmt_created
+  </sql>
+  <select id="selectByExample" parameterType="guda.task.dao.domain.TaskListDOCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from task_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="startRow &gt;= 0">
+      limit ${startRow} , ${pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from task_list
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from task_list
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="guda.task.dao.domain.TaskListDO">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into task_list (seller_id, seller_name, amount_pay, 
+      amount_fee, item_id, item_name, 
+      item_url, item_pic, descript, 
+      comment, status, scored, 
+      gmt_created)
+    values (#{sellerId,jdbcType=BIGINT}, #{sellerName,jdbcType=VARCHAR}, #{amountPay,jdbcType=BIGINT}, 
+      #{amountFee,jdbcType=BIGINT}, #{itemId,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, 
+      #{itemUrl,jdbcType=VARCHAR}, #{itemPic,jdbcType=VARCHAR}, #{descript,jdbcType=VARCHAR}, 
+      #{comment,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{scored,jdbcType=INTEGER}, 
+      #{gmtCreated,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="guda.task.dao.domain.TaskListDO">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into task_list
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sellerId != null">
+        seller_id,
+      </if>
+      <if test="sellerName != null">
+        seller_name,
+      </if>
+      <if test="amountPay != null">
+        amount_pay,
+      </if>
+      <if test="amountFee != null">
+        amount_fee,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="itemName != null">
+        item_name,
+      </if>
+      <if test="itemUrl != null">
+        item_url,
+      </if>
+      <if test="itemPic != null">
+        item_pic,
+      </if>
+      <if test="descript != null">
+        descript,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="scored != null">
+        scored,
+      </if>
+      <if test="gmtCreated != null">
+        gmt_created,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sellerId != null">
+        #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerName != null">
+        #{sellerName,jdbcType=VARCHAR},
+      </if>
+      <if test="amountPay != null">
+        #{amountPay,jdbcType=BIGINT},
+      </if>
+      <if test="amountFee != null">
+        #{amountFee,jdbcType=BIGINT},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemUrl != null">
+        #{itemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="itemPic != null">
+        #{itemPic,jdbcType=VARCHAR},
+      </if>
+      <if test="descript != null">
+        #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="scored != null">
+        #{scored,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreated != null">
+        #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="guda.task.dao.domain.TaskListDOCriteria" resultType="java.lang.Integer">
+    select count(*) from task_list
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="guda.task.dao.domain.TaskListDO">
+    update task_list
+    <set>
+      <if test="sellerId != null">
+        seller_id = #{sellerId,jdbcType=BIGINT},
+      </if>
+      <if test="sellerName != null">
+        seller_name = #{sellerName,jdbcType=VARCHAR},
+      </if>
+      <if test="amountPay != null">
+        amount_pay = #{amountPay,jdbcType=BIGINT},
+      </if>
+      <if test="amountFee != null">
+        amount_fee = #{amountFee,jdbcType=BIGINT},
+      </if>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemUrl != null">
+        item_url = #{itemUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="itemPic != null">
+        item_pic = #{itemPic,jdbcType=VARCHAR},
+      </if>
+      <if test="descript != null">
+        descript = #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="scored != null">
+        scored = #{scored,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreated != null">
+        gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="guda.task.dao.domain.TaskListDO">
+    update task_list
+    set seller_id = #{sellerId,jdbcType=BIGINT},
+      seller_name = #{sellerName,jdbcType=VARCHAR},
+      amount_pay = #{amountPay,jdbcType=BIGINT},
+      amount_fee = #{amountFee,jdbcType=BIGINT},
+      item_id = #{itemId,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      item_url = #{itemUrl,jdbcType=VARCHAR},
+      item_pic = #{itemPic,jdbcType=VARCHAR},
+      descript = #{descript,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      scored = #{scored,jdbcType=INTEGER},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+</mapper>

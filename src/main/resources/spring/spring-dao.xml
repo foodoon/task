@@ -1,0 +1,63 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:cache="http://www.springframework.org/schema/cache" xsi:schemaLocation="http://www.springframework.org/schema/cache         http://www.springframework.org/schema/cache/spring-cache-3.1.xsd         http://www.springframework.org/schema/beans         http://www.springframework.org/schema/beans/spring-beans-3.1.xsd         http://www.springframework.org/schema/context         http://www.springframework.org/schema/context/spring-context-3.1.xsd         http://www.springframework.org/schema/mvc         http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+ <bean id="userDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.task.dao.UserDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
+ <bean id="accountDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.task.dao.AccountDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
+ <bean id="bankDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.task.dao.BankDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
+ <bean id="taskListDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.task.dao.TaskListDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
+ <bean id="taskAcceptDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.task.dao.TaskAcceptDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
+ <bean id="taskPropsDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.task.dao.TaskPropsDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
+ <bean id="taobaoUserDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.task.dao.TaobaoUserDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
+ <bean id="taobaoItemDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.task.dao.TaobaoItemDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
+ <bean id="taobaoOrderDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.task.dao.TaobaoOrderDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
+ <bean id="taobaoSellerDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.task.dao.TaobaoSellerDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
+ <bean id="taobaoShopDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.task.dao.TaobaoShopDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
+ <bean id="operateLogDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.task.dao.OperateLogDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
+ <bean id="userScoreDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.task.dao.UserScoreDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
+ <bean id="accountDetailDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.task.dao.AccountDetailDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
+ <bean id="userScoreStatDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.task.dao.UserScoreStatDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
+</beans>

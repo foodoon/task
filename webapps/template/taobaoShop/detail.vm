@@ -1,0 +1,80 @@
+$!taobaoShop详情
+  <table class="table">
+                <tr>
+              <td>发货速度评分</td>
+              <td>
+                  $!taobaoShopDO.deliveryScore
+              </td>
+          </tr>
+
+                <tr>
+              <td>服务态度评分</td>
+              <td>
+                  $!taobaoShopDO.serviceScore
+              </td>
+          </tr>
+
+                <tr>
+              <td>商品描述评分</td>
+              <td>
+                  $!taobaoShopDO.itemScore
+              </td>
+          </tr>
+
+                <tr>
+              <td>店铺创建时间</td>
+              <td>
+                  $!taobaoShopDO.created
+              </td>
+          </tr>
+
+                <tr>
+              <td>店铺公告</td>
+              <td>
+                  $!taobaoShopDO.descript
+              </td>
+          </tr>
+
+                <tr>
+              <td>店铺标题</td>
+              <td>
+                  $!taobaoShopDO.title
+              </td>
+          </tr>
+
+                <tr>
+              <td>卖家昵称</td>
+              <td>
+                  $!taobaoShopDO.nick
+              </td>
+          </tr>
+
+                <tr>
+              <td>店铺所属类目编号</td>
+              <td>
+                  $!taobaoShopDO.cid
+              </td>
+          </tr>
+
+                <tr>
+              <td>店铺地址</td>
+              <td>
+                  $!taobaoShopDO.shopUrl
+              </td>
+          </tr>
+
+                <tr>
+              <td>店铺ID</td>
+              <td>
+                  $!taobaoShopDO.sid
+              </td>
+          </tr>
+
+                <tr>
+              <td>淘宝用户ID</td>
+              <td>
+                  $!taobaoShopDO.taobaoUserId
+              </td>
+          </tr>
+
+        </table>

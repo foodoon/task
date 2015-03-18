@@ -1,0 +1,9 @@
+<nav class="sidebar light">
+        <ul>
+            <li>
+                <a href="$homeServer.getURI('seller/member/index.htm')" #if($sideMenu == 'member_index') class="active" #end> <i class="icon-link"></i> <span>所有会员</span></a>
+            </li>
+
+        </ul>
+
+</nav>

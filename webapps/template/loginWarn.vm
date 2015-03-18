@@ -1,0 +1,6 @@
+#set($layout="template/layout/errorLayout.vm")
+<div class="alert form-center">
+
+            您的帐号暂时无法登录，原因:${errorMsg}
+
+</div>

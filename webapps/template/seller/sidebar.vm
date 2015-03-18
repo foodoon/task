@@ -1,0 +1,10 @@
+<nav class="sidebar light">
+
+    <ul>
+        <li>
+
+        <a href="$homeServer.getURI('seller/index.htm')" class="heading  collapsed #if($sideMenu == 'index') active #end "> <i class="icon-link"></i> <span>最近销售记录</span></a>
+    </li>
+        </ul>
+    </nav>
+

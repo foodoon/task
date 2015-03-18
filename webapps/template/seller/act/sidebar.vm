@@ -1,0 +1,17 @@
+<nav class="sidebar light">
+    <ul>
+        <li>
+            <a href="$homeServer.getURI('seller/act/ing.htm')" #if($sideMenu == 'act_ing') class="active" #end><span>进行中的任务</span></a>
+        </li>
+        <li>
+            <a href="$homeServer.getURI('seller/act/init.htm')" #if($sideMenu == 'act_init') class="active" #end>  <span>待发布的任务</span></a>
+        </li>
+        <li>
+            <a href="$homeServer.getURI('seller/act/his.htm')" #if($sideMenu == 'act_his') class="active" #end> <span>历史任务</span></a>
+        </li>
+        <li>
+            <a href="$homeServer.getURI('seller/act/onsale.htm')" #if($sideMenu == 'act_onsale') class="active" #end> <span>销售中的商品</span></a>
+        </li>
+    </ul>
+</nav>
+

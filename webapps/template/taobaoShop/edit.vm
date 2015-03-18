@@ -1,0 +1,100 @@
+编辑
+
+<form name="taobaoShopEditForm" action="$!homeServer.getURI("taobaoShop/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("taobaoShopEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+                #springBind("taobaoShopEditForm.deliveryScore")
+          <tr>
+              <td>发货速度评分</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoShopEditForm.serviceScore")
+          <tr>
+              <td>服务态度评分</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoShopEditForm.itemScore")
+          <tr>
+              <td>商品描述评分</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoShopEditForm.created")
+          <tr>
+              <td>店铺创建时间</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoShopEditForm.descript")
+          <tr>
+              <td>店铺公告</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoShopEditForm.title")
+          <tr>
+              <td>店铺标题</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoShopEditForm.nick")
+          <tr>
+              <td>卖家昵称</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoShopEditForm.cid")
+          <tr>
+              <td>店铺所属类目编号</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoShopEditForm.shopUrl")
+          <tr>
+              <td>店铺地址</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoShopEditForm.sid")
+          <tr>
+              <td>店铺ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+                #springBind("taobaoShopEditForm.taobaoUserId")
+          <tr>
+              <td>淘宝用户ID</td>
+              <td>
+                  <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                  #foreach($error in $status.errorMessages) <b>$error</b>  #end
+              </td>
+          </tr>
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

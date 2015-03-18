@@ -1,0 +1,8 @@
+#set($layout="template/layout/errorLayout.vm")
+<div class="alert form-center">
+
+    抱歉~~服务端开小差了~~~ 请稍后再试，或者联系管理员~~
+                $!{errorMsg}
+
+</div>
+

@@ -1,0 +1,77 @@
+#set($layout="template/layout/loginLayout.vm")
+<div class="container">
+
+    <form  class="form width450 form-center" name="userForm" action="$!homeServer.getURI("doReg.htm")" method="post">
+        <input style="display:none" type="text"  name="_form_token" value="$formTool.newForm($request)" />
+        <h2 class="form-signin-heading">
+               会员注册
+        </h2>
+        <table class="table  no-border">
+            #springBind("userForm.userType")
+            <input type="hidden" name="${status.expression}" value="$!status.value"/>
+            #springBind("userForm.loginName")
+            <tr>
+                <td>登录名</td>
+                <td>
+                    <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                    #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                </td>
+            </tr>
+            #springBind("userForm.password")
+            <tr>
+                <td>登录密码</td>
+                <td>
+                    <input class="form-control" type="password" name="${status.expression}" value="$!status.value" />
+                    #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                </td>
+            </tr>
+            #springBind("userForm.qq")
+            <tr>
+                <td>QQ</td>
+                <td>
+                    <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                    #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                </td>
+            </tr>
+            #springBind("userForm.wangwang")
+            <tr>
+                <td>旺旺</td>
+                <td>
+                    <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                    #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                </td>
+            </tr>
+            #springBind("userForm.mail")
+            <tr>
+                <td>邮箱</td>
+                <td>
+                    <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                    #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                </td>
+            </tr>
+            #springBind("userForm.phone")
+            <tr>
+                <td>手机号码</td>
+                <td>
+                    <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                    #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                </td>
+            </tr>
+            #springBind("userForm.recommendQq")
+            <tr>
+                <td>推荐人QQ</td>
+                <td>
+                    <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+                    #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                </td>
+            </tr>
+
+
+            <tr>
+                <td colspan="2">
+                    <input type="submit" class="button default btn-block" value="注册"/></td>
+            </tr>
+        </table>
+    </form>
+
+    </div>

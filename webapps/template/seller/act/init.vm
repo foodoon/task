@@ -1,0 +1,57 @@
+#set($headerMenu = "seller_act")
+#set($sideMenu = "act_init")
+
+
+
+<div class="container">
+    <div class="grid fluid">
+        <div class="row">
+        <div class="span2">
+            #parse("template/seller/act/sidebar.vm")
+
+        </div>
+        <!--/span contain-->
+        <div class="span10">
+            <nav class="breadcrumbs">
+                <ul>
+                    <li><a href="$!homeServer.getURI("seller/act/ing.htm")">任务管理</a></li>
+                    <li class="active"><a href="#">待发布的活动</a></li>
+                </ul>
+            </nav>
+            <div class="row-fluid">
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th class="text-left">商品名称</th>
+                        <th class="text-left">商品URL</th>
+                        <th class="text-left">垫付金额(单位:元))</th>
+                        <th class="text-left">佣金(单位:元))</th>
+                        <th class="text-left">活动状态</th>
+                        <th class="text-left">操作</th>
+                    </tr>
+                    </thead>
+                    #set($_token = $formTool.newForm($request))
+                    #foreach($f in $taskListDOList)
+                        <tr>
+                            <td> $!f.itemName</td>
+                            <td> $!f.itemUrl</td>
+                            <td> $price.formatCNY($!f.amountPay)</td>
+                            <td> $price.formatCNY($!f.amountFee)</td>
+                            <td> $enum.i('guda.task.biz.enums.TaskStatusEnum',$!f.status)</td>
+
+                            <td>
+                                <a href="$!homeServer.getURI("seller/act/edit.htm").addQueryData('id',"$!f.id")">编辑</a>
+                                <a href="$!homeServer.getURI("seller/act/doPublish.htm").addQueryData('id',"$!f.id").addQueryData('_form_token',"$_token")">发布</a>
+                                <a href="$!homeServer.getURI("seller/act/doDelete.htm").addQueryData('id',"$!f.id").addQueryData('_form_token',"$_token")"
+                                   onclick="return confirm('确定删除吗?')">删除</a>
+
+
+                        </tr>
+                    #end
+                </table>
+
+                $tile.load('template/common/page.vm').param('query',$query).param('path','seller/act/init.htm')
+            </div>
+        </div>
+        <!--/span contain-->
+    </div></div></div>

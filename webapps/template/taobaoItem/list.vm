@@ -1,0 +1,56 @@
+<a  class="btn btn-default"  href="$!homeServer.getURI("taobaoItem/create.htm")" >新建</a>
+
+<table  class="table">
+    <thead>
+ <tr>
+              <th class="text-left">用户ID</th>
+              <th class="text-left">类目ID</th>
+              <th class="text-left">卖家自定义类目列表</th>
+              <th class="text-left">图片地址</th>
+              <th class="text-left">数量</th>
+              <th class="text-left">上架时间</th>
+              <th class="text-left">下架时间</th>
+              <th class="text-left">价格</th>
+              <th class="text-left">是否有折扣</th>
+              <th class="text-left">是否橱窗推荐</th>
+              <th class="text-left">商品状态</th>
+              <th class="text-left">是否虚拟物品</th>
+              <th class="text-left">商品ID</th>
+              <th class="text-left">标题</th>
+              <th class="text-left">卖家昵称</th>
+              <th class="text-left">类型</th>
+              <th class="text-left">有效期</th>
+              <th class="text-left">销售数量</th>
+              <th class="text-left">是否违规</th>
+          <th class="text-left">操作</th>
+ </tr>
+    </thead>
+#foreach($f in $taobaoItemDOList)
+  <tr>
+               <td> $!f.taobaoUserId</td>
+               <td> $!f.cid</td>
+               <td> $!f.sellerCids</td>
+               <td> $!f.picUrl</td>
+               <td> $!f.num</td>
+               <td> $!f.listTime</td>
+               <td> $!f.delistTime</td>
+               <td> $!f.price</td>
+               <td> $!f.hasDiscount</td>
+               <td> $!f.hasShowcase</td>
+               <td> $!f.approveStatus</td>
+               <td> $!f.isVirtual</td>
+               <td> $!f.numIid</td>
+               <td> $!f.title</td>
+               <td> $!f.nick</td>
+               <td> $!f.type</td>
+               <td> $!f.validThru</td>
+               <td> $!f.soldQuantity</td>
+               <td> $!f.violation</td>
+          <td><a href="$!homeServer.getURI("taobaoItem/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
+    <td><a href="$!homeServer.getURI("taobaoItem/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
+      <td><a href="$!homeServer.getURI("taobaoItem/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
+ </tr>
+#end
+</table>
+
+$tile.load('home/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')
